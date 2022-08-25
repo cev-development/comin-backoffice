@@ -1,0 +1,17 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: "761aa6dd-3a25-40e1-bbd4-18e270e861ed"
+          heroku_app_name: "comin-backoffice" #Must be unique in Heroku
+          heroku_email: "system.comin@gmail.com"
