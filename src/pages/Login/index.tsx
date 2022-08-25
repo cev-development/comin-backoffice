@@ -1,5 +1,5 @@
 import Input from "../../components/Input/style";
-import { Button, Container, Content, Form, Label, Title } from "./style";
+import { Button, Container, Content, Form, Label, Title } from "./styles";
 
 const Login: React.FC = () => {
   return (
