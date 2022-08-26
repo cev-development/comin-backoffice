@@ -23,7 +23,9 @@ interface IResult {
   };
 }
 
-const getAllUsersRequest = () => async (dispatch: Dispatch) => {
+const getAllUsersRequest = () => async (dispatch: Dispatch, getState: any) => {
+  const { users } = getState();
+  console.log(users);
   const response = await api.get(`/user`);
 
   if (response.status === 200) {
