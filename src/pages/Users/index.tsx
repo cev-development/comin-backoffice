@@ -14,32 +14,19 @@ const Users: React.FC = () => {
   const passwordRef = useRef<HTMLInputElement | any>(null);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { id } = useParams<{ id?: string }>();
+  const params = useParams<{ id?: string }>();
 
-  const {
-    state: {
-      name: nameValue,
-      username: usernameValue,
-      password: passwordValue,
-    },
-  } = useLocation<any>();
+  const location = useLocation<any>();
 
   useEffect(() => {
-    if (id) {
+    console.log(params?.id);
+    if (params?.id) {
       console.log("EDIT");
-      nameRef.current.value = nameValue;
-      usernameRef.current.value = usernameValue;
-      passwordRef.current.value = passwordValue;
+      nameRef.current.value = location?.state?.name;
+      usernameRef.current.value = location?.state?.username;
+      passwordRef.current.value = location?.state?.password;
     }
-  }, [
-    id,
-    nameRef,
-    usernameRef,
-    passwordRef,
-    nameValue,
-    usernameValue,
-    passwordValue,
-  ]);
+  }, [params?.id, nameRef, usernameRef, passwordRef, location]);
 
   return (
     <Container>
@@ -57,10 +44,10 @@ const Users: React.FC = () => {
               usernameRef?.current?.value &&
               passwordRef?.current?.value
             ) {
-              if (id) {
+              if (params.id) {
                 const user = await dispatch(
                   createUserRequest({
-                    id,
+                    id: params.id,
                     name: nameRef?.current?.value,
                     username: usernameRef?.current?.value,
                     password: passwordRef?.current?.value,

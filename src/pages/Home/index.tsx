@@ -34,16 +34,11 @@ const Home: React.FC = () => {
       title: "Ações",
       render: (user: any) => {
         return (
-          <>
-            <button
-              onClick={() =>
-                history.push(`/user/${user._id}/edit`, { ...user })
-              }
-            >
-              Editar
-            </button>
-            <button>Visualizar</button>
-          </>
+          <button
+            onClick={() => history.push(`/user/${user._id}/edit`, { ...user })}
+          >
+            Editar
+          </button>
         );
       },
     },
@@ -52,6 +47,9 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Content>
+        <button onClick={() => history.push(`/user/create`)}>
+          Criar usuário
+        </button>
         {!loading && <TablePage columns={columns} dataSource={data} />}
       </Content>
     </Container>

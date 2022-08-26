@@ -19,7 +19,7 @@ export const Content = styled.main`
   border-radius: 5px;
   -webkit-box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
-  background-color: blue;
+  background-color: #fff;
 `;
 
 export const Title = styled.div`
